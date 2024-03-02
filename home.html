@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LearnEd</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+  			if($(window).scrollTop()){
+  			  $('nav').addClass('black');
+ 			 }else {
+ 		   $('nav').removeClass('black');
+ 		 }
+		});
+
+		// Function to handle sign out
+		function signOut() {
+			// Redirect to index.html
+			window.location.href = 'index.html';
+		}
+	</script>
+</head>
+<body>
+<!-- Navigation Bar -->
+	<header id="header">
+		<nav>
+			
+			<ul>
+				<li><a class="active" href="">Home</a></li>
+				<li><a href="javascript:void(0);" onclick="signOut()">Sign out</a></li>
+			</ul>
+			<img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+		</nav>
+		<div class="head-container">
+			<li><a class="active" href="submit.html">Sumbit Documents</a></li>
+		<li><a class="active" href="view.html">View Documents</a></li>
+			
+		</div>
+		
+	</header>
+	
+	<script src="st.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Documents - LearnEd</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header id="header">
+    <nav>
+        <ul>
+            <li><a class="active" href="home.html">Home</a></li>
+            <li><a class="active" href="submit.html">Submit Documents</a></li>
+            <li><a href="view.html">View Documents</a></li>
+            <li><a href="javascript:void(0);" onclick="signOut()">Sign out</a></li>
+        </ul>
+        <img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+    </nav>
+    <div class="feedbox">
+        <div class="feed">
+            <form id="submitForm">
+                <label for="normal_sheets_url">Google Sheets URL (Normal Sheets):</label><br>
+                <input type="url" id="normal_sheets_url" name="normal_sheets_url" required><br><br>
+                <label for="rubric_sheets_url">Google Sheets URL (Rubric Sheets):</label><br>
+                <input type="url" id="rubric_sheets_url" name="rubric_sheets_url" required><br><br>
+                <button type="submit" id="csubmit">Submit</button>
+            </form>
+        </div>
+    </div>
+</header>
+<script src="st.js"></script>
+<script>
+document.getElementById("submitForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get values from input fields
+    var normalSheetsUrl = document.getElementById("normal_sheets_url").value;
+    var rubricSheetsUrl = document.getElementById("rubric_sheets_url").value;
+
+    // Save both URLs to local storage
+    localStorage.setItem('normalSheetsUrl', normalSheetsUrl);
+    localStorage.setItem('rubricSheetsUrl', rubricSheetsUrl);
+
+    // Redirect to view.html
+    window.location.href = 'view.html';
+});
+</script>
+</body>
+</html>

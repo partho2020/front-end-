@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>View Documents - LearnEd</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header id="header">
+    <nav>
+        <ul>
+            <li><a class="active" href="home.html">Home</a></li>
+            <li><a href="submit.html">Submit Documents</a></li>
+            <li><a class="active" href="view.html">View Documents</a></li>
+            <li><a href="javascript:void(0);" onclick="signOut()">Sign out</a></li>
+        </ul>
+        <img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+    </nav>
+    <div class="view-docs">
+        <h2>View Documents</h2>
+        <div id="document-container"></div>
+    </div>
+</header>
+
+<script>
+window.onload = function() {
+    // Retrieve submitted Google Sheets URL from local storage
+    var submittedUrl = localStorage.getItem('submittedUrl');
+
+    // Display the Google Sheets URL
+    if (submittedUrl) {
+        var documentContainer = document.getElementById('document-container');
+        var iframe = document.createElement('iframe');
+        iframe.src = submittedUrl;
+        iframe.width = '100%';
+        iframe.height = '600px';
+        iframe.frameborder = '0';
+        documentContainer.appendChild(iframe);
+    } else {
+        // If URL is not found in local storage, display a message
+        document.getElementById('document-container').innerHTML = '<p>No document submitted yet.</p>';
+    }
+};
+
+// Function to handle sign out
+function signOut() {
+    // Redirect to index.html
+    window.location.href = 'index.html';
+}
+
+// Function to handle side menu
+function sideMenu(action) {
+    var sideMenu = document.getElementById('side-menu');
+    if (action === 0) {
+        sideMenu.style.transform = 'translateX(0)';
+    } else {
+        sideMenu.style.transform = 'translateX(-100%)';
+    }
+}
+</script>
+</body>
+</html>
